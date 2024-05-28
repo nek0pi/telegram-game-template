@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-Storn-1.0";
 const contentToCache = [
-    "Build/StornBuild.loader.js",
-    "Build/StornBuild.framework.js.br",
-    "Build/StornBuild.data.br",
-    "Build/StornBuild.wasm.br",
+    "Build/Builds.loader.js",
+    "Build/Builds.framework.js",
+    "Build/Builds.data",
+    "Build/Builds.wasm",
     "TemplateData/style.css"
 
 ];
