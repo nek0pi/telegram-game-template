@@ -1,4 +1,4 @@
-const cacheName = "DefaultCompany-Storn-1.0.4(optimized build)";
+const cacheName = "DefaultCompany-Storn-1.0.5(isMobile)";
 const contentToCache = [
     "Build/StornBuild.loader.js",
     "Build/StornBuild.framework.js.unityweb",

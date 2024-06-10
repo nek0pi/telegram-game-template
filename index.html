@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
+    <script src="../../Plugins/WebGL/WebglPlugin.jslib"></script>
   </head>
   <body>
     <div id="unity-container">
@@ -56,6 +57,15 @@
         updateBannerVisibility();
       }
 
+      function isMobile() {
+        if (window.Telegram && window.Telegram.WebApp){
+          return ['android', 'android_x', 'ios'].indexOf(window.Telegram.WebApp.platform) >= 0;
+        }
+        else{
+          return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        }
+      }
+
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/StornBuild.loader.js";
       var config = {
@@ -66,7 +76,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
-        productVersion: "1.0.4(optimized build)",
+        productVersion: "1.0.5(isMobile)",
         showBanner: unityShowBanner,
       };
 
@@ -94,6 +104,7 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
+          unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', JSON.stringify(isMobile()));
         }).catch((message) => {
           alert(message);
         });
