@@ -58,12 +58,12 @@
       }
 
       function isMobile() {
-        //if (window.Telegram && window.Telegram.WebApp){
+        if (window.Telegram && window.Telegram.WebApp){
           return ['android', 'android_x', 'ios'].indexOf(window.Telegram.WebApp.platform) >= 0;
-        //}
-        //else{
-        //  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        //}
+        }
+        else{
+          return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        }
       }
 
       var buildUrl = "Build";
