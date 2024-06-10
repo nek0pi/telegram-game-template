@@ -113,17 +113,7 @@
       document.body.appendChild(script);
       document.getElementById("myButton").onclick = function() {
         alert("Button was clicked!");
-        const navigatorVibrate =
-                navigator.vibrate ||
-                navigator.webkitVibrate ||
-                navigator.mozVibrate ||
-                navigator.msVibrate;
-
-        if (navigatorVibrate) {
-          navigatorVibrate.call(navigator, [15]);
-        } else {
-          window.Telegram?.WebApp?.HapticFeedback.impactOccurred('heavy');
-        }
+        window.Telegram?.WebApp?.HapticFeedback.impactOccurred('light');
       };
     </script>
   </body>
