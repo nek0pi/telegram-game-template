@@ -10,7 +10,6 @@
     <script src="../../Plugins/WebGL/WebglPlugin.jslib"></script>
   </head>
   <body>
-  <button id="myButton">Click Me</button>
     <div id="unity-container">
       <canvas id="unity-canvas" width=393 height=852 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -111,10 +110,6 @@
         });
       };
       document.body.appendChild(script);
-      document.getElementById("myButton").onclick = function() {
-        alert("Button was clicked!");
-        window.Telegram?.WebApp?.HapticFeedback.impactOccurred('light');
-      };
     </script>
   </body>
 </html>
