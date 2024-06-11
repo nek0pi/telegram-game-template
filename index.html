@@ -27,7 +27,7 @@
       function OpenLink(url){
         window.Telegram?.WebApp?.openLink(url);
       }
-
+      
       function Vibrate(){
         /*const navigatorVibrate =
                 navigator.vibrate ||
@@ -38,7 +38,7 @@
         if (navigatorVibrate) {
           navigatorVibrate.call(navigator, [15]);
         } else {*/
-        window.Telegram.WebApp.HapticFeedback.impactOccurred('soft');
+          window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         //}
       }
 
@@ -126,7 +126,6 @@
 
       loadingBar.style.display = "block";
 
-      window.Telegram.WebApp.ready();
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
