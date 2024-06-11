@@ -14,8 +14,6 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
       window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.showAlert("Alert!");
-      window.Telegram.WebApp.showAlert(window.Telegram.WebApp.isExpanded);
       function isMobile() {
         if (window.Telegram && window.Telegram.WebApp){
           return ['android', 'android_x', 'ios'].indexOf(window.Telegram.WebApp.platform) >= 0;
