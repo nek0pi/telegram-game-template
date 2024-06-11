@@ -25,9 +25,9 @@
       function OpenLink(url){
         window.Telegram?.WebApp?.openLink(url);
       }
-      
+
       function Vibrate(){
-        const navigatorVibrate =
+        /*const navigatorVibrate =
                 navigator.vibrate ||
                 navigator.webkitVibrate ||
                 navigator.mozVibrate ||
@@ -35,9 +35,9 @@
 
         if (navigatorVibrate) {
           navigatorVibrate.call(navigator, [15]);
-        } else {
-          window.Telegram?.WebApp?.HapticFeedback.impactOccurred('light');
-        }
+        } else {*/
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('soft');
+        //}
       }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
