@@ -13,7 +13,7 @@
       window.Telegram.WebApp.ready();
 
       function GetUserId(){
-        return window.Telegram?.WebApp.initDataUnsafe.user?.id || 'no-user-id';
+        return window.Telegram?.WebApp.WebAppInitData.user?.id || 'no-user-id';
       }
       
       function isMobile() {
