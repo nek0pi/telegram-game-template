@@ -11,9 +11,9 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
       window.Telegram.WebApp.ready();
-      
+
       function GetUserId(){
-        return window.Telegram?.WebApp.initDataUnsafe.user?.id || 'no-user-id';  
+        return window.Telegram?.WebApp.initDataUnsafe.user?.id || 'no-user-id';
       }
       
       function isMobile() {
@@ -138,8 +138,10 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams',
-                  JSON.stringify(isMobile()), JSON.stringify(GetUserId()));
+          var isMobileValue = JSON.stringify(isMobile());
+          var userIdValue = JSON.stringify(GetUserId());
+          var jsonString = '{"isMobile":' + isMobileValue + ',"userId":' + userIdValue + '}';
+          unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', jsonString);
         }).catch((message) => {
           alert(message);
         });
