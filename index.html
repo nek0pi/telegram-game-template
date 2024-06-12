@@ -28,8 +28,6 @@
       sessionStorage.setItem("__telegram__initParams", jsonInitParams)</script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-      window.Telegram.WebApp.ready();
-      
       function GetUserId(){
         return GetURLParameter('userId') || 'no-user-id';
       }
@@ -148,6 +146,8 @@
       }
 
       loadingBar.style.display = "block";
+
+      window.Telegram.WebApp.ready();
 
       var script = document.createElement("script");
       script.src = loaderUrl;
