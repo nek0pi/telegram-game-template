@@ -29,7 +29,7 @@
       }
       
       function Vibrate(){
-        /*const navigatorVibrate =
+        const navigatorVibrate =
                 navigator.vibrate ||
                 navigator.webkitVibrate ||
                 navigator.mozVibrate ||
@@ -37,9 +37,9 @@
 
         if (navigatorVibrate) {
           navigatorVibrate.call(navigator, [15]);
-        } else {*/
+        } else {
           window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
-        //}
+        }
       }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
@@ -133,7 +133,8 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', JSON.stringify(isMobile()));
+          unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', 
+                  JSON.stringify(isMobile()), window.Telegram.WebApp.initData.user.id);
         }).catch((message) => {
           alert(message);
         });
