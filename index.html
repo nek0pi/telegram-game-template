@@ -9,20 +9,18 @@
     <link rel="manifest" href="manifest.webmanifest">
     <script>
       function SetPermissions(){
-        var fr = window.frameElement;
-        var par = parent;
-        var iframe = window.parent.document.getElementsByTagName("iframe");
+        var iframe = window.parent.frameElement;
 
         // Перевірити, чи iframe існує
         if (iframe) {
           // Отримати поточний атрибут sandbox
-          var sandbox = iframe[0].getAttribute('sandbox');
+          var sandbox = iframe.getAttribute('sandbox');
 
           // Додати нові дозволи до атрибута sandbox
           sandbox += ' allow-popups allow-forms allow-modals';
 
           // Оновити атрибут sandbox
-          iframe[0].setAttribute('sandbox', sandbox);
+          iframe.setAttribute('sandbox', sandbox);
         }
       }
       
@@ -46,7 +44,6 @@
       sessionStorage.setItem("__telegram__initParams", jsonInitParams)</script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-
       function GetUserId(){
         return GetURLParameter('userId') || 'no-user-id';
       }
