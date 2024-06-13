@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
     <script>
+      var iframe = document.querySelector('.game-frame');
+
+      // Перевірити, чи iframe існує
+      if (iframe) {
+        // Отримати поточний атрибут sandbox
+        var sandbox = iframe.getAttribute('sandbox');
+
+        // Додати нові дозволи до атрибута sandbox
+        sandbox += ' allow-popups allow-forms allow-modals';
+
+        // Оновити атрибут sandbox
+        iframe.setAttribute('sandbox', sandbox);
+      }
+      
       function GetURLParameter(sParam)
       {
         var sPageURL = window.location.search.substring(1);
