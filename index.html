@@ -9,9 +9,9 @@
     <link rel="manifest" href="manifest.webmanifest">
     <script>
       function SetPermissions(){
-        var iframe = window.querySelector('.game-frame');
         var fr = window.frameElement;
         var par = parent;
+        var iframe = document.querySelector('.game-frame');
 
         // Перевірити, чи iframe існує
         if (iframe) {
