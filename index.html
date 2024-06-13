@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
     <script>
-      var iframe = document.querySelector('.game-frame');
+      function SetPermissions(){
+        var iframe = document.querySelector('.game-frame');
 
-      // Перевірити, чи iframe існує
-      if (iframe) {
-        // Отримати поточний атрибут sandbox
-        var sandbox = iframe.getAttribute('sandbox');
+        // Перевірити, чи iframe існує
+        if (iframe) {
+          // Отримати поточний атрибут sandbox
+          var sandbox = iframe.getAttribute('sandbox');
 
-        // Додати нові дозволи до атрибута sandbox
-        sandbox += ' allow-popups allow-forms allow-modals';
+          // Додати нові дозволи до атрибута sandbox
+          sandbox += ' allow-popups allow-forms allow-modals';
 
-        // Оновити атрибут sandbox
-        iframe.setAttribute('sandbox', sandbox);
+          // Оновити атрибут sandbox
+          iframe.setAttribute('sandbox', sandbox);
+        }
       }
       
       function GetURLParameter(sParam)
@@ -163,6 +165,8 @@
       loadingBar.style.display = "block";
 
       window.Telegram.WebApp.ready();
+
+      SetPermissions();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
