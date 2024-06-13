@@ -9,6 +9,11 @@
     <link rel="manifest" href="manifest.webmanifest">
     <script>
       function SetPermissions(){
+        var arrFrames = parent.document.getElementsByTagName("IFRAME");
+        for (var i = 0; i < arrFrames.length; i++) {
+          if (arrFrames[i].contentWindow === window) alert("yay!");
+        }
+        
         var iframe = window.parent.frameElement;
 
         // Перевірити, чи iframe існує
@@ -164,6 +169,7 @@
       loadingBar.style.display = "block";
 
       window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
