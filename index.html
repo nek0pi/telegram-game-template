@@ -45,7 +45,8 @@
     </script>
     <script>
       var webAppVersion = GetURLParameter('webAppVersion');
-      var jsonInitParams = '{"tgWebAppVersion":' + webAppVersion + '}';
+      var tgWebAppBotInline = GetURLParameter('tgWebAppBotInline');
+      var jsonInitParams = '{"tgWebAppBotInline"' + tgWebAppBotInline + ',' + '"tgWebAppVersion":' + webAppVersion + '}';
       sessionStorage.setItem("__telegram__initParams", jsonInitParams)</script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
