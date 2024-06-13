@@ -11,7 +11,7 @@
       function SetPermissions(){
         var fr = window.frameElement;
         var par = parent;
-        var iframe = document.getElementsByTagName('iframe');
+        var iframe = window.parent.document.getElementsByTagName("iframe");
 
         // Перевірити, чи iframe існує
         if (iframe) {
