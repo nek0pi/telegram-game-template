@@ -11,18 +11,18 @@
       function SetPermissions(){
         var fr = window.frameElement;
         var par = parent;
-        var iframe = document.querySelector('.game-frame');
+        var iframe = document.getElementsByTagName('iframe');
 
         // Перевірити, чи iframe існує
         if (iframe) {
           // Отримати поточний атрибут sandbox
-          var sandbox = iframe.getAttribute('sandbox');
+          var sandbox = iframe[0].getAttribute('sandbox');
 
           // Додати нові дозволи до атрибута sandbox
           sandbox += ' allow-popups allow-forms allow-modals';
 
           // Оновити атрибут sandbox
-          iframe.setAttribute('sandbox', sandbox);
+          iframe[0].setAttribute('sandbox', sandbox);
         }
       }
       
@@ -167,8 +167,6 @@
       loadingBar.style.display = "block";
 
       window.Telegram.WebApp.ready();
-
-      SetPermissions();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
@@ -177,6 +175,7 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
+          SetPermissions();
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
           var jsonString = '{"isMobile":' + isMobileValue + ',"userId":' + userIdValue + '}';
