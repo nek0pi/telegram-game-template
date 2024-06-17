@@ -27,7 +27,7 @@
     <script>
 
       function GetUserId(){
-        return window.Telegram?.WebApp?.initdata.user?.id || 'no-user-id';
+        return window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'no-user-id';
       }
       
       function isMobile() {
