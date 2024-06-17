@@ -160,10 +160,21 @@
         }).then((unityInstance) => {
           window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
+
+          window.onbeforeunload = function(e) {
+            console.log("Calling OnClose from Browser!");
+            unityInstance.SendMessage("GameStateService", "OnClose");
+
+            var dialogText = "You game has been saved!  Would you like to continue unloading the page?";
+            e.returnValue = dialogText;
+            return dialogText;
+          };
+          
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
           var jsonString = '{"isMobile":' + isMobileValue + ',"userId":' + userIdValue + '}';
           unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', jsonString);
+          
         }).catch((message) => {
           alert(message);
         });
