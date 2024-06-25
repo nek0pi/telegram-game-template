@@ -69,6 +69,15 @@
         {
           window.unityInstance.SendMessage('GameStateService', 'OnClose');
         });
+        window.addEventListener('beforeunload', function (e) {
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+          e.preventDefault();
+          e.returnValue = ''; // Modern browsers require returnValue to be set
+        });
+        window.addEventListener('unload', function (e) {
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+          navigator.sendBeacon('/logCloseEvent');
+        });
       }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
