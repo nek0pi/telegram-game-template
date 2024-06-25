@@ -59,11 +59,15 @@
           window.Telegram.WebApp.HapticFeedback.impactOccurred(impact);
         }
       }
-      
+
       function SubscribeTelegramEvents(){
-        window.Telegram.WebApp.onEvent('backButtonClicked', () => 
+        window.Telegram.WebApp.onEvent('backButtonClicked', () =>
         {
-            window.unityInstance.SendMessage('GameStateService', 'OnClose');
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+        });
+        window.Telegram.WebApp.onEvent('popupClosed', () =>
+        {
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
         });
       }
 
@@ -153,6 +157,7 @@
 
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
+      window.Telegram.WebApp.enableClosingConfirmation();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
