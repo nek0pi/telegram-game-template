@@ -59,6 +59,13 @@
           window.Telegram.WebApp.HapticFeedback.impactOccurred(impact);
         }
       }
+      
+      function SubscribeTelegramEvents(){
+        window.Telegram.WebApp.onEvent('backButtonClicked', () => 
+        {
+            window.unityInstance.SendMessage('GameStateService', 'OnClose');
+        });
+      }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
       window.ExternalOpenLink = OpenLink;
@@ -156,10 +163,7 @@
           window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
 
-          window.addEventListener('beforeunload', function (e) {
-            console.log("Calling OnClose from Browser!");
-            unityInstance.SendMessage("GameStateService", "OnClose");
-          });
+          SubscribeTelegramEvents();
           
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
