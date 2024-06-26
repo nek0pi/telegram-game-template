@@ -46,7 +46,7 @@
         window.Telegram?.WebApp?.openLink(url);
       }
       
-      function Vibrate(impact){
+      function Vibrate(){
         const navigatorVibrate =
                 navigator.vibrate ||
                 navigator.webkitVibrate ||
@@ -56,28 +56,8 @@
         if (navigatorVibrate) {
           navigatorVibrate.call(navigator, [15]);
         } else {
-          window.Telegram.WebApp.HapticFeedback.impactOccurred(impact);
+          window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         }
-      }
-
-      function SubscribeTelegramEvents(){
-        window.Telegram.WebApp.onEvent('backButtonClicked', () =>
-        {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-        });
-        window.Telegram.WebApp.onEvent('popupClosed', () =>
-        {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-        });
-        window.addEventListener('beforeunload', function (e) {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-          e.preventDefault();
-          e.returnValue = ''; // Modern browsers require returnValue to be set
-        });
-        window.addEventListener('unload', function (e) {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-          navigator.sendBeacon('/logCloseEvent');
-        });
       }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
@@ -134,12 +114,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/TelegramMonsterBuild.loader.js";
+      var loaderUrl = buildUrl + "/StornBuild.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/TelegramMonsterBuild.data.br",
-        frameworkUrl: buildUrl + "/TelegramMonsterBuild.framework.js.br",
-        codeUrl: buildUrl + "/TelegramMonsterBuild.wasm.br",
+        dataUrl: buildUrl + "/StornBuild.data.unityweb",
+        frameworkUrl: buildUrl + "/StornBuild.framework.js.unityweb",
+        codeUrl: buildUrl + "/StornBuild.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
@@ -166,7 +146,6 @@
 
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
-      window.Telegram.WebApp.enableClosingConfirmation();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
@@ -177,7 +156,10 @@
           window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
 
-          SubscribeTelegramEvents();
+          window.addEventListener('beforeunload', function (e) {
+            console.log("Calling OnClose from Browser!");
+            unityInstance.SendMessage("GameStateService", "OnClose");
+          });
           
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
