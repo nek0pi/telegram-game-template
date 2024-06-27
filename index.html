@@ -59,11 +59,11 @@
           window.Telegram.WebApp.HapticFeedback.impactOccurred(impact);
         }
       }
-
+      
       function SubscribeTelegramEvents(){
-        window.Telegram.WebApp.onEvent('backButtonClicked', () =>
+        window.Telegram.WebApp.onEvent('backButtonClicked', () => 
         {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+            window.unityInstance.SendMessage('GameStateService', 'OnClose');
         });
         window.Telegram.WebApp.onEvent('popupClosed', () =>
         {
@@ -137,9 +137,9 @@
       var loaderUrl = buildUrl + "/TelegramMonsterBuild.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/TelegramMonsterBuild.data.br",
-        frameworkUrl: buildUrl + "/TelegramMonsterBuild.framework.js.br",
-        codeUrl: buildUrl + "/TelegramMonsterBuild.wasm.br",
+        dataUrl: buildUrl + "/TelegramMonsterBuild.data.unityweb",
+        frameworkUrl: buildUrl + "/TelegramMonsterBuild.framework.js.unityweb",
+        codeUrl: buildUrl + "/TelegramMonsterBuild.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
