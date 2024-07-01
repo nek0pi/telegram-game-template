@@ -25,6 +25,10 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
 
+      function GetStartParam(){
+        return window.Telegram?.WebApp?.initDataUnsafe?.start_param || '';
+      }
+      
       function GetUserId(){
         return window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'no-user-id';
       }
@@ -80,9 +84,18 @@
         });
       }
 
+      async function CopyToClipboard(text){
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+
       window.ExternalOpenTelegramLink = OpenTelegramLink;
       window.ExternalOpenLink = OpenLink;
       window.ExternalVibrate = Vibrate;
+      window.ExternalCopyToClipboard = CopyToClipboard;
     </script>
   </head>
   <body>
@@ -181,7 +194,8 @@
           
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
-          var jsonString = '{"isMobile":' + isMobileValue + ',"userId":' + userIdValue + '}';
+          var startParam = JSON.stringify(GetStartParam());
+          var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + '}';
           unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', jsonString);
         
         }).catch((message) => {
