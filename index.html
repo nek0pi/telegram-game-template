@@ -25,6 +25,10 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
 
+      function GetStartParam(){
+        return window.Telegram?.WebApp?.initDataUnsafe?.start_param || '';
+      }
+      
       function GetUserId(){
         return window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'no-user-id';
       }
@@ -46,7 +50,7 @@
         window.Telegram?.WebApp?.openLink(url);
       }
       
-      function Vibrate(){
+      function Vibrate(impact){
         const navigatorVibrate =
                 navigator.vibrate ||
                 navigator.webkitVibrate ||
@@ -56,13 +60,42 @@
         if (navigatorVibrate) {
           navigatorVibrate.call(navigator, [15]);
         } else {
-          window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+          window.Telegram.WebApp.HapticFeedback.impactOccurred(impact);
+        }
+      }
+      
+      function SubscribeTelegramEvents(){
+        window.Telegram.WebApp.onEvent('backButtonClicked', () => 
+        {
+            window.unityInstance.SendMessage('GameStateService', 'OnClose');
+        });
+        window.Telegram.WebApp.onEvent('popupClosed', () =>
+        {
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+        });
+        window.addEventListener('beforeunload', function (e) {
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+          e.preventDefault();
+          e.returnValue = ''; // Modern browsers require returnValue to be set
+        });
+        window.addEventListener('unload', function (e) {
+          window.unityInstance.SendMessage('GameStateService', 'OnClose');
+          navigator.sendBeacon('/logCloseEvent');
+        });
+      }
+
+      async function CopyToClipboard(text){
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (error) {
+          console.error(error.message);
         }
       }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
       window.ExternalOpenLink = OpenLink;
       window.ExternalVibrate = Vibrate;
+      window.ExternalCopyToClipboard = CopyToClipboard;
     </script>
   </head>
   <body>
@@ -114,16 +147,16 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/StornBuild.loader.js";
+      var loaderUrl = buildUrl + "/TelegramMonsterBuild.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/StornBuild.data.br",
-        frameworkUrl: buildUrl + "/StornBuild.framework.js.br",
-        codeUrl: buildUrl + "/StornBuild.wasm.br",
+        dataUrl: buildUrl + "/TelegramMonsterBuild.data.br",
+        frameworkUrl: buildUrl + "/TelegramMonsterBuild.framework.js.br",
+        codeUrl: buildUrl + "/TelegramMonsterBuild.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
-        productVersion: "1.0.6(firebase)",
+        productVersion: "1.0.7(new design)",
         showBanner: unityShowBanner,
       };
 
@@ -146,6 +179,7 @@
 
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
+      window.Telegram.WebApp.enableClosingConfirmation();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
@@ -156,14 +190,12 @@
           window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
 
-          window.addEventListener('beforeunload', function (e) {
-            console.log("Calling OnClose from Browser!");
-            unityInstance.SendMessage("GameStateService", "OnClose");
-          });
+          SubscribeTelegramEvents();
           
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
-          var jsonString = '{"isMobile":' + isMobileValue + ',"userId":' + userIdValue + '}';
+          var startParam = JSON.stringify(GetStartParam());
+          var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + '}';
           unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', jsonString);
         
         }).catch((message) => {
