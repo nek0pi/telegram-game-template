@@ -147,13 +147,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/TelegramMonsterBuild.loader.js";
+      var loaderUrl = buildUrl + "/sholda-test2.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/TelegramMonsterBuild.data.br",
-        frameworkUrl: buildUrl + "/TelegramMonsterBuild.framework.js.br",
-        codeUrl: buildUrl + "/TelegramMonsterBuild.wasm.br",
-        symbolsUrl: buildUrl + "/TelegramMonsterBuild.symbols.json.br",
+        dataUrl: buildUrl + "/sholda-test2.data.unityweb",
+        frameworkUrl: buildUrl + "/sholda-test2.framework.js.unityweb",
+        codeUrl: buildUrl + "/sholda-test2.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
@@ -208,18 +207,17 @@
 
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js" ></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js" ></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js" ></script>
-    
+
     <script>
       // Your web app's Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyC9HmVlrFCrx9KPfGnQpOHH4hNr_qhAyno",
         authDomain: "storn-8b630.firebaseapp.com",
-        databaseURL: "https://storn-8b630-default-rtdb.firebaseio.com",
         projectId: "storn-8b630",
         storageBucket: "storn-8b630.appspot.com",
         messagingSenderId: "1057449617426",
-        appId: "1:1057449617426:web:b6a8475cb8a4c99dc8d0cb"
+        appId: "1:1057449617426:web:b6a8475cb8a4c99dc8d0cb",
+        databaseURL: "https://storn-8b630-default-rtdb.firebaseio.com",
       };
 
       // Initialize Firebase
