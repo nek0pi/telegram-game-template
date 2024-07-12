@@ -32,7 +32,7 @@
       function GetUserId(){
         return window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'no-user-id';
       }
-
+      
       function GetUserData(){
         return window.Telegram?.WebApp?.initDataUnsafe?.user || '';
       }
@@ -151,12 +151,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Default WebGL.loader.js";
+      var loaderUrl = buildUrl + "/TelegramMonsterBuild.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Default WebGL.data.br",
-        frameworkUrl: buildUrl + "/Default WebGL.framework.js.br",
-        codeUrl: buildUrl + "/Default WebGL.wasm.br",
+        dataUrl: buildUrl + "/TelegramMonsterBuild.data.br",
+        frameworkUrl: buildUrl + "/TelegramMonsterBuild.framework.js.br",
+        codeUrl: buildUrl + "/TelegramMonsterBuild.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
