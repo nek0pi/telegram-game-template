@@ -32,6 +32,10 @@
       function GetUserId(){
         return window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'no-user-id';
       }
+
+      function GetUserData(){
+        return window.Telegram?.WebApp?.initDataUnsafe?.user || '';
+      }
       
       function isMobile() {
         if (window.Telegram && window.Telegram.WebApp){
@@ -195,7 +199,8 @@
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
           var startParam = JSON.stringify(GetStartParam());
-          var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + '}';
+          var userData = JSON.stringify(GetUserData());
+          var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + ',"userData":' + userData + '}';
           unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', jsonString);
         
         }).catch((message) => {
