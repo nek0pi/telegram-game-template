@@ -95,11 +95,16 @@
           console.error(error.message);
         }
       }
+      
+      function CloseTelegramApp(){
+          window.Telegram?.WebApp?.close();
+      }
 
       window.ExternalOpenTelegramLink = OpenTelegramLink;
       window.ExternalOpenLink = OpenLink;
       window.ExternalVibrate = Vibrate;
       window.ExternalCopyToClipboard = CopyToClipboard;
+      window.CloseGame = CloseTelegramApp;
     </script>
   </head>
   <body>
