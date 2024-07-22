@@ -67,11 +67,10 @@
           window.Telegram.WebApp.HapticFeedback.impactOccurred(impact);
         }
       }
-      
+
       function ShowTelegramBackButton(){
         window.Telegram.WebApp.BackButton.show();
         window.Telegram.WebApp.BackButton.onClick(() => {
-          alert("back button pressed!");
           window.unityInstance.SendMessage('GameStateService', 'TelegramOnClosePressed');
         });
       }
@@ -191,7 +190,6 @@
       window.Telegram.WebApp.expand();
       window.Telegram.WebApp.enableClosingConfirmation();
       window.Telegram.WebApp.disableVerticalSwipes();
-      window.Telegram.WebApp.onEvent("viewportChanged", alert("Viewport changed"));
       
       var script = document.createElement("script");
       script.src = loaderUrl;
