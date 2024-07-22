@@ -68,23 +68,11 @@
         }
       }
       
-      function SubscribeTelegramEvents(){
-        window.Telegram.WebApp.onEvent('backButtonClicked', () => 
-        {
-            window.unityInstance.SendMessage('GameStateService', 'OnClose');
-        });
-        window.Telegram.WebApp.onEvent('popupClosed', () =>
-        {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-        });
-        window.addEventListener('beforeunload', function (e) {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-          e.preventDefault();
-          e.returnValue = ''; // Modern browsers require returnValue to be set
-        });
-        window.addEventListener('unload', function (e) {
-          window.unityInstance.SendMessage('GameStateService', 'OnClose');
-          navigator.sendBeacon('/logCloseEvent');
+      function ShowTelegramBackButton(){
+        window.Telegram.WebApp.BackButton.show();
+        window.Telegram.WebApp.BackButton.onClick(() => {
+          alert("back button pressed!");
+          window.unityInstance.SendMessage('GameStateService', 'TelegramOnClosePressed');
         });
       }
 
@@ -203,11 +191,7 @@
       window.Telegram.WebApp.expand();
       window.Telegram.WebApp.enableClosingConfirmation();
       window.Telegram.WebApp.disableVerticalSwipes();
-      window.Telegram.WebApp.BackButton.onClick(() => {
-        alert("back button pressed!");
-        window.Telegram.WebApp.BackButton.hide();
-      });
-      window.Telegram.WebApp.MainButton.show();
+      window.Telegram.WebApp.onEvent("viewportChanged", alert("Viewport changed"));
       
       var script = document.createElement("script");
       script.src = loaderUrl;
@@ -219,7 +203,7 @@
           loadingBar.style.display = "none";
           monsters.style.display = "none";
 
-          SubscribeTelegramEvents();
+          ShowTelegramBackButton();
           
           var isMobileValue = JSON.stringify(isMobile());
           var userIdValue = JSON.stringify(GetUserId());
