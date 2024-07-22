@@ -203,7 +203,11 @@
       window.Telegram.WebApp.expand();
       window.Telegram.WebApp.enableClosingConfirmation();
       window.Telegram.WebApp.disableVerticalSwipes();
-      window.Telegram.WebApp.BackButton.onClick(alert("back button pressed!"));
+      window.Telegram.WebApp.BackButton.onClick(() => {
+        alert("back button pressed!");
+        window.Telegram.WebApp.BackButton.hide();
+      });
+      window.Telegram.WebApp.MainButton.show();
       
       var script = document.createElement("script");
       script.src = loaderUrl;
