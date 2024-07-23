@@ -68,7 +68,7 @@
         }
       }
 
-      function ShowTelegramBackButton(){
+      function SetupTelegramBackButton(){
         window.Telegram.WebApp.BackButton.show();
         window.Telegram.WebApp.BackButton.onClick(() => {
           window.unityInstance.SendMessage('GameStateService', 'TelegramOnClosePressed');
@@ -87,11 +87,22 @@
           window.Telegram?.WebApp?.close();
       }
 
+      function GetExternalParams() {
+        var isMobileValue = JSON.stringify(isMobile());
+        var userIdValue = JSON.stringify(GetUserId());
+        var startParam = JSON.stringify(GetStartParam());
+        var userData = JSON.stringify(GetUserData());
+        var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + ',"userData":' + userData + '}';
+        return jsonString;
+      }
+
       window.ExternalOpenTelegramLink = OpenTelegramLink;
       window.ExternalOpenLink = OpenLink;
       window.ExternalVibrate = Vibrate;
       window.ExternalCopyToClipboard = CopyToClipboard;
       window.CloseGame = CloseTelegramApp;
+      window.GetExternalParams = GetExternalParams;
+      
     </script>
   </head>
   <body>
@@ -201,14 +212,7 @@
           loadingBar.style.display = "none";
           monsters.style.display = "none";
 
-          ShowTelegramBackButton();
-          
-          var isMobileValue = JSON.stringify(isMobile());
-          var userIdValue = JSON.stringify(GetUserId());
-          var startParam = JSON.stringify(GetStartParam());
-          var userData = JSON.stringify(GetUserData());
-          var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + ',"userData":' + userData + '}';
-          unityInstance.SendMessage('BootstrapperManager', 'SetExternalParams', jsonString);
+          SetupTelegramBackButton();
         
         }).catch((message) => {
           alert(message);
