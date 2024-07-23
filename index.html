@@ -87,21 +87,24 @@
           window.Telegram?.WebApp?.close();
       }
 
-      function GetExternalParams() {
-        var isMobileValue = JSON.stringify(isMobile());
-        var userIdValue = JSON.stringify(GetUserId());
-        var startParam = JSON.stringify(GetStartParam());
-        var userData = JSON.stringify(GetUserData());
-        var jsonString = '{"isMobile":' + isMobileValue + ',"start_param":' + startParam + ',"userId":' + userIdValue + ',"userData":' + userData + '}';
-        return jsonString;
-      }
-
       window.ExternalOpenTelegramLink = OpenTelegramLink;
       window.ExternalOpenLink = OpenLink;
       window.ExternalVibrate = Vibrate;
       window.ExternalCopyToClipboard = CopyToClipboard;
       window.CloseGame = CloseTelegramApp;
-      window.GetExternalParams = GetExternalParams;
+      
+      window.GetExternalParams = function() {
+        var isMobileValue = JSON.stringify(isMobile());
+        var userIdValue = JSON.stringify(GetUserId());
+        var startParam = JSON.stringify(GetStartParam());
+        var userData = JSON.stringify(GetUserData());
+        return JSON.stringify({
+          isMobile: isMobileValue,
+          userId: userIdValue,
+          userData: userData,
+          start_param: startParam
+        });
+      };
       
     </script>
   </head>
