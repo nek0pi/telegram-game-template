@@ -15,6 +15,7 @@
     <type fullname="Game.Gameplay.GameplayBlockService" preserve="all" />
     <type fullname="Game.Installers.GameplayInstaller" preserve="all" />
     <type fullname="Game.Installers.MenuInstaller" preserve="all" />
+    <type fullname="Game.Installers.NotificationInstaller" preserve="all" />
     <type fullname="Game.Installers.PoolsInstaller" preserve="all" />
     <type fullname="Game.Installers.UISceneInstaller" preserve="all" />
     <type fullname="Game.Installers.UserFXsInstaller" preserve="all" />
@@ -25,10 +26,10 @@
     <type fullname="Game.View.Menus.BaseMenuView" preserve="all" />
     <type fullname="Game.View.Menus.GameplayUIMenu" preserve="all" />
     <type fullname="Game.View.Menus.Variants.BoostMenu" preserve="all" />
-    <type fullname="Game.View.Menus.Variants.DailyQuestView" preserve="all" />
     <type fullname="Game.View.Menus.Variants.EarnMenu" preserve="all" />
     <type fullname="Game.View.Menus.Variants.ReferralsMenu" preserve="all" />
     <type fullname="Game.View.MenuSwitchButton" preserve="all" />
+    <type fullname="Game.View.Notification.NotificationView" preserve="all" />
     <type fullname="Game.View.Popups.DailyRewardPopup" preserve="all" />
     <type fullname="Game.View.Referral.ReferralFriendView" preserve="all" />
     <type fullname="Game.View.Referral.ReferralLevelView" preserve="all" />
@@ -55,7 +56,7 @@
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
   </assembly>
-  <assembly fullname="Unity.InputSystem, Version=1.7.0.0, Culture=neutral, PublicKeyToken=null">
+  <assembly fullname="Unity.InputSystem, Version=1.8.2.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.InputSystem.InputActionAsset" preserve="all" />
     <type fullname="UnityEngine.InputSystem.InputActionReference" preserve="all" />
     <type fullname="UnityEngine.InputSystem.UI.InputSystemUIInputModule" preserve="all" />
@@ -69,7 +70,6 @@
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
-    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.LegacyResourcesProvider" preserve="all" />
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
   </assembly>
   <assembly fullname="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -124,7 +124,6 @@
     <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
     <type fullname="UnityEngine.UI.ContentSizeFitter" preserve="all" />
     <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
-    <type fullname="UnityEngine.UI.GridLayoutGroup" preserve="all" />
     <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
     <type fullname="UnityEngine.UI.Image" preserve="all" />
     <type fullname="UnityEngine.UI.LayoutElement" preserve="all" />
