@@ -31,6 +31,7 @@
     <type fullname="Game.View.MenuSwitchButton" preserve="all" />
     <type fullname="Game.View.Notification.NotificationView" preserve="all" />
     <type fullname="Game.View.Popups.DailyRewardPopup" preserve="all" />
+    <type fullname="Game.View.Popups.ReferralsTooltipPopup" preserve="all" />
     <type fullname="Game.View.Referral.ReferralFriendView" preserve="all" />
     <type fullname="Game.View.Referral.ReferralLevelView" preserve="all" />
     <type fullname="Game.View.RoundTimerView" preserve="all" />
@@ -84,7 +85,6 @@
     <type fullname="TMPro.LigatureSubstitutionRecord" preserve="nothing" serialized="true" />
     <type fullname="TMPro.MarkPositionAdjustment" preserve="nothing" serialized="true" />
     <type fullname="TMPro.MarkToBaseAdjustmentRecord" preserve="nothing" serialized="true" />
-    <type fullname="TMPro.MarkToMarkAdjustmentRecord" preserve="nothing" serialized="true" />
     <type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true" />
     <type fullname="TMPro.TMP_FontFeatureTable" preserve="nothing" serialized="true" />
     <type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true" />
@@ -131,7 +131,6 @@
     <type fullname="UnityEngine.UI.LayoutElement" preserve="all" />
     <type fullname="UnityEngine.UI.Mask" preserve="all" />
     <type fullname="UnityEngine.UI.RawImage" preserve="all" />
-    <type fullname="UnityEngine.UI.RectMask2D" preserve="all" />
     <type fullname="UnityEngine.UI.ScrollRect" preserve="all" />
     <type fullname="UnityEngine.UI.Slider" preserve="all" />
     <type fullname="UnityEngine.UI.VerticalLayoutGroup" preserve="all" />
