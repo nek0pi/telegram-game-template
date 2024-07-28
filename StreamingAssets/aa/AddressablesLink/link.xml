@@ -17,6 +17,7 @@
     <type fullname="Game.Installers.MenuInstaller" preserve="all" />
     <type fullname="Game.Installers.NotificationInstaller" preserve="all" />
     <type fullname="Game.Installers.PoolsInstaller" preserve="all" />
+    <type fullname="Game.Installers.PopupsManagerInstaller" preserve="all" />
     <type fullname="Game.Installers.UISceneInstaller" preserve="all" />
     <type fullname="Game.Installers.UserFXsInstaller" preserve="all" />
     <type fullname="Game.Score.View.ScoreView" preserve="all" />
@@ -30,8 +31,10 @@
     <type fullname="Game.View.Menus.Variants.ReferralsMenu" preserve="all" />
     <type fullname="Game.View.MenuSwitchButton" preserve="all" />
     <type fullname="Game.View.Notification.NotificationView" preserve="all" />
-    <type fullname="Game.View.Popups.DailyRewardPopup" preserve="all" />
-    <type fullname="Game.View.Popups.ReferralsTooltipPopup" preserve="all" />
+    <type fullname="Game.View.Popups.BasePopupView" preserve="all" />
+    <type fullname="Game.View.Popups.Variants.DailyRewardPopup" preserve="all" />
+    <type fullname="Game.View.Popups.Variants.ReferralsTooltipPopup" preserve="all" />
+    <type fullname="Game.View.Popups.Variants.UsageBoostersPopup" preserve="all" />
     <type fullname="Game.View.Referral.ReferralFriendView" preserve="all" />
     <type fullname="Game.View.Referral.ReferralLevelView" preserve="all" />
     <type fullname="Game.View.RoundTimerView" preserve="all" />
@@ -40,7 +43,6 @@
     <type fullname="Game.View.SpecialBoosterVfxView" preserve="all" />
     <type fullname="Game.View.TextVFXView" preserve="all" />
     <type fullname="Game.View.Upgrades.BoostersUpgradeView" preserve="all" />
-    <type fullname="Game.View.UsageBoostersModal" preserve="all" />
     <type fullname="RoundModifier" preserve="all" />
     <type fullname="UnityEngine.UI.ProceduralImage.ProceduralImage" preserve="all" />
     <type fullname="Game.UserFXs.VFX.VfxType" preserve="nothing" serialized="true" />
@@ -56,16 +58,6 @@
   </assembly>
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
-  </assembly>
-  <assembly fullname="Unity.InputSystem, Version=1.7.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="UnityEngine.InputSystem.InputActionAsset" preserve="all" />
-    <type fullname="UnityEngine.InputSystem.InputActionReference" preserve="all" />
-    <type fullname="UnityEngine.InputSystem.UI.InputSystemUIInputModule" preserve="all" />
-    <type fullname="UnityEngine.InputSystem.InputAction" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.InputActionMap" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.InputBinding" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.InputControlScheme" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.InputControlScheme/DeviceRequirement" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
@@ -120,7 +112,6 @@
     <type fullname="UnityEngine.Font" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="UnityEngine.EventSystems.EventSystem" preserve="all" />
     <type fullname="UnityEngine.UI.AspectRatioFitter" preserve="all" />
     <type fullname="UnityEngine.UI.Button" preserve="all" />
     <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
