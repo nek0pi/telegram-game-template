@@ -38,23 +38,6 @@ body { padding: 0; margin: 0 }
     top: 45px;
     transform: translate(-50%, 0%);
 }
-#unity-progress-bar-empty {
-    margin-left: auto;
-    margin-right: auto;
-    width: 272px;
-    height: 18px;
-    margin-top: 49px;
-    background: url('progress-bar-empty.png') no-repeat center;
-    background-size: contain
-}
-#unity-progress-bar-full {
-    width: 0%;
-    height: 18px;
-    margin-top: 49px;
-    background: url('progress-bar-full.png') no-repeat left;
-    transition: width 0.25s;
-    background-size: cover
-}
 #unity-warning {
     position: absolute;
     left: 50%;

@@ -125,9 +125,6 @@
         <div id="unity-logo">
           <h3 id="logo-text">GAME</h3>
         </div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
       </div>
       <div id="unity-warning"> </div>
     </div>
@@ -142,7 +139,6 @@
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var monsters = document.querySelector("#monsters");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var warningBanner = document.querySelector("#unity-warning");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
@@ -179,7 +175,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Storn",
-        productVersion: "1.0.12(optimizations)",
+        productVersion: "1.0.13(cryticalFixes)",
         showBanner: unityShowBanner,
       };
 
@@ -209,7 +205,6 @@
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
