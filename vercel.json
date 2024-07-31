@@ -55,7 +55,7 @@
       ]
     },
     {
-      "source": "/api/(.*)",
+      "source": "/storage.googleapis.com/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
